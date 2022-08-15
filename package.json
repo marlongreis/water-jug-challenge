@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build": "rimraf dist && tsc -p tsconfig-build.json"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
