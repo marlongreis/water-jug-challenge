@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist && tsc -p tsconfig-build.json"
+    "build": "rimraf dist && tsc -p tsconfig-build.json",
+    "lint": "eslint 'src/**' --fix",
+    "start": "node dist/main/server.js",
+    "test": "export $(cat test.env | grep -Ev '^\\s*$|^\\s*\\#' | xargs) && jest --passWithNoTests --runInBand --detectOpenHandles",
+    "test:verbose": "jest --passWithNoTests",
+    "test:unit": "npm test -- --watch -c jest-unit-config.js"
   },
   "keywords": [],
   "author": "",
