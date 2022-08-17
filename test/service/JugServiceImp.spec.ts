@@ -24,30 +24,30 @@ const makeSutFactory = (): TypeSut => {
 
 
 describe('JugServiceImp', () => {
-    test('should return success and data when has solution', () => {
+    test('should return success and data when has solution', async () => {
         const { service } = makeSutFactory()
         const input = new JugInputData(2, 10, 4)
-        const response = service.calculatesTheMostEfficientWay(input)
-        expect(response).resolves.toMatchObject({
+        const response = await service.calculatesTheMostEfficientWay(input)
+        expect(response).toMatchObject({
             solved: true,
             moreEfficient: 4,
             message: 'Most efficient way is with 4 steps'
         })
     })
 
-    test('should return failure and data when not has solution', () => {
+    test('should return failure and data when not has solution', async () => {
         const { service } = makeSutFactory()
 
         const input = new JugInputData(2, 10, 40)
-        const response = service.calculatesTheMostEfficientWay(input)
-        expect(response).resolves.toMatchObject({
+        const response = await service.calculatesTheMostEfficientWay(input)
+        expect(response).toMatchObject({
             solved: false,
             moreEfficient: undefined,
             message: 'No Solution'
         })
     })
 
-    test('should return failure when validation.isValid return false', () => {
+    test('should return failure when validation.isValid return false', async () => {
         const { service, validation } = makeSutFactory()
 
         jest.spyOn(validation, 'isValid').mockImplementationOnce(() => false)
@@ -56,8 +56,8 @@ describe('JugServiceImp', () => {
         }))
 
         const input = new JugInputData(2, 10, 40)
-        const response = service.calculatesTheMostEfficientWay(input)
-        expect(response).rejects.toMatchObject({
+        const response = await service.calculatesTheMostEfficientWay(input)
+        expect(response).toMatchObject({
             anyFild: 'any message'
         })
     })
