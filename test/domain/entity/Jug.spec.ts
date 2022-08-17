@@ -13,4 +13,9 @@ describe('Jug', () => {
         expect(response).toBe(2)
     })
 
+    test('should return 0 when reteceive 0 and 0', () => {
+        const response = Object.getPrototypeOf(jug).euclideanDistance(0, 0)
+        expect(response).toBe(0)
+    })
+
 })
