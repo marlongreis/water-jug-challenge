@@ -1,17 +1,9 @@
-import { BucketStatus, JugData } from '@/domain/data'
-
 export class Jug {
-    constructor (
-        private readonly bucketX: number,
-        private readonly bucketY: number,
-        private readonly amountWanted: number
-    ) { }
+    private euclideanDistance (x: number, y: number): number {
+        if (y === 0) {
+            return x
+        }
 
-    public pourTheGallonOfWater (gallonX: number, gallonY: number): JugData {
-        return new JugData(
-            false,
-            BucketStatus.FILL,
-            BucketStatus.EMPTY,
-            'Fill bucket x')
+        return this.euclideanDistance(y, x % y)
     }
 }
