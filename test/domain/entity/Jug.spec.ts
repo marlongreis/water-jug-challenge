@@ -18,4 +18,16 @@ describe('Jug', () => {
         expect(response).toBe(0)
     })
 
+
+    test("should return true when problem doesn't has a solution", () => {
+        const response = Object.getPrototypeOf(jug).hasNoSolution(10, 10, 1)
+        expect(response).toBeTruthy()
+    })
+
+    test('should return false when problem has a solution', () => {
+        const response = Object.getPrototypeOf(jug).hasNoSolution(10, 2, 10)
+        expect(response).toBeFalsy()
+    })
+
+
 })
