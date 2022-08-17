@@ -1,5 +1,5 @@
 
-export class JugData {
+export class JugOutputData {
     constructor (
         public readonly solved: boolean,
         public readonly moreEfficient: number,
