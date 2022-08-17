@@ -1,2 +1,2 @@
-export * from './data'
+export * from './data/JugData'
 export * from './entity/Jug'
