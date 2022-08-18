@@ -3,7 +3,8 @@ import {
     JugInputData,
     JugOutputData,
     JugService,
-    JugValidation
+    JugValidation,
+    ValidationError
 } from '@/domain'
 
 export class JugServiceImp implements JugService {
@@ -14,6 +15,6 @@ export class JugServiceImp implements JugService {
             const jug = new Jug(data.bucketX, data.bucketY, data.amountWanted)
             return jug.calculatesTheMostEfficientWay()
         }
-        return this.validation.cause()
+        throw new ValidationError(422, this.validation.cause())
     }
 }
