@@ -1,4 +1,6 @@
+import { JugInputData } from '@/domain'
+
 export interface JugValidation {
-    isValid: () => boolean
+    isValid: (input: JugInputData) => boolean
     cause: () => any
 }
