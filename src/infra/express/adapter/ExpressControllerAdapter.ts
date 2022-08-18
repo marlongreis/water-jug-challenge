@@ -6,14 +6,6 @@ export const ExpressControllerAdapter = (controller: Controller) => {
     const { body } = req
 
     const response: HttpResponse = await controller.handle({ body })
-
-    if (response.statusCode === 200) {
-      res.status(response.statusCode).json(response.body)
-    } else {
-      res.status(response.statusCode).json({
-        error: response.body.constructor.name,
-        message: response.body.message
-      })
-    }
+    res.status(response.statusCode).json(response.body)
   }
 }

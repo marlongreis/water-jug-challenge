@@ -41,7 +41,7 @@ describe('Jug', () => {
 
 
     test('should return the smallest number of steps when it is possible to solve', () => {
-        const response = new Jug(2, 10, 4).calculatesTheMostEfficientWay()
+        const response = new Jug(10, 2, 4).calculatesTheMostEfficientWay()
 
         expect(response).toMatchObject({
             solved: true,
