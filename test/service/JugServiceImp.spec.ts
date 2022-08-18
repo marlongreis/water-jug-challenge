@@ -61,8 +61,4 @@ describe('JugServiceImp', () => {
             anyFild: 'any message'
         })
     })
-
-
-
-
 })
