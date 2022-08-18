@@ -1,4 +1,4 @@
-import { JugInputData, JugValidation, JugService } from "@/domain"
+import { JugInputData, JugValidation, JugService, ValidationError } from "@/domain"
 import { JugServiceImp } from '@/service'
 
 const jugValidationStubFactory = (): JugValidation => {
@@ -56,9 +56,7 @@ describe('JugServiceImp', () => {
         }))
 
         const input = new JugInputData(2, 10, 40)
-        const response = await service.calculatesTheMostEfficientWay(input)
-        expect(response).toMatchObject({
-            anyFild: 'any message'
-        })
+        expect(async () => { await service.calculatesTheMostEfficientWay(input) }).
+            rejects.toThrow(ValidationError)
     })
 })
