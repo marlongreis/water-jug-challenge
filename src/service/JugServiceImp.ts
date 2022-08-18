@@ -11,7 +11,7 @@ export class JugServiceImp implements JugService {
     constructor (private readonly validation: JugValidation) { }
 
     async calculatesTheMostEfficientWay (data: JugInputData): Promise<JugOutputData> {
-        if (this.validation.isValid()) {
+        if (this.validation.isValid(data)) {
             const jug = new Jug(data.bucketX, data.bucketY, data.amountWanted)
             return jug.calculatesTheMostEfficientWay()
         }

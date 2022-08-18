@@ -29,14 +29,14 @@ class JugInputDataValidator extends Validator<JugInputData> {
 
 export class FluentValidatorAdapter implements JugValidation {
     private readonly validator: Validator<JugInputData>
-    private readonly validationResponse: any
+    private validationResponse: any
 
-    constructor (readonly input: JugInputData) {
+    constructor () {
         this.validator = new JugInputDataValidator()
-        this.validationResponse = this.validator.validate(input)
     }
 
-    isValid (): boolean {
+    isValid (input: JugInputData): boolean {
+        this.validationResponse = this.validator.validate(input)
         return Object.keys(this.validationResponse).length === 0
     }
 
