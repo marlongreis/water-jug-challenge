@@ -1,0 +1,13 @@
+version: '3'
+services:
+  water_jug_challenge_api:
+    container_name: water_jug_challenge
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: water-jug-challenge       
+    ports:
+      - ${APP_PORT}:3000
+    restart: on-failure
+    environment:
+      - APP_PORT=3000
