@@ -1,5 +1,5 @@
 {
-  "name": "WaterJugChallenge",
+  "name": "water-jug-challenge",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -7,10 +7,13 @@
     "build": "rimraf dist && tsc -p tsconfig-build.json",
     "lint": "eslint 'src/**' --fix",
     "start": "node dist/main/server.js",
+    "start:dev": "export $(cat local.env | grep -Ev '^\\s*$|^\\s*\\#' | xargs) && nodemon --exec ts-node  src/infra/main/server.ts",
     "test": "export $(cat test.env | grep -Ev '^\\s*$|^\\s*\\#' | xargs) && jest --passWithNoTests --runInBand --detectOpenHandles",
     "test:verbose": "jest --passWithNoTests",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
-    "test:staged": "npm test --findRelatedTests"
+    "test:staged": "npm test --findRelatedTests",
+    "test:integration": "npm test -- --watch -c jest-integration-config.js",
+    "test:ci": "npm test -- --coverage  --silent --noStackTrace"
   },
   "keywords": [],
   "author": "",
